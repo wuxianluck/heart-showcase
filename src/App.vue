@@ -117,28 +117,24 @@ const swiperConfig = {
                 <!-- 功能亮点 -->
                 <div class="features-grid">
                     <div class="feature-item">
-                        <span class="feature-icon"></span>
                         <div>
-                            <strong>AI倾诉</strong>
+                            <strong>AI共情回应</strong>
                             <p>接入DeepSeek API，流式逐字渲染</p>
                         </div>
                     </div>
                     <div class="feature-item">
-                        <span class="feature-icon"></span>
                         <div>
                             <strong>社交关系星图</strong>
                             <p>ECharts力引导图，节点映射亲疏</p>
                         </div>
                     </div>
                     <div class="feature-item">
-                        <span class="feature-icon"></span>
                         <div>
                             <strong>AI社交模拟</strong>
                             <p>4个场景角色扮演，练习尴尬应对</p>
                         </div>
                     </div>
                     <div class="feature-item">
-                        <span class="feature-icon"></span>
                         <div>
                             <strong>跨端集成</strong>
                             <p>Capacitor构建iOS原生，模拟器运行</p>
@@ -247,21 +243,7 @@ const swiperConfig = {
     height: 100%;
 }
 
-/* 底部 */
-.footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-    color: #aaa;
-    font-size: 14px;
-
-    p {
-        padding-bottom: 10px;
-    }
-}
-
-/* 项目信息区域 - 默认小屏样式 */
+/* 项目信息区域 */
 .project-info {
     width: 100%;
     max-width: 700px;
@@ -272,6 +254,7 @@ const swiperConfig = {
 .info-card {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 24px;
     padding: 40px 36px;
     box-shadow: 0 8px 40px rgba(0,0,0,0.08);
@@ -290,6 +273,7 @@ const swiperConfig = {
         font-size: 16px;
         color: #5a4a3a;
         line-height: 1.8;
+        letter-spacing: 0.2px;
         margin-bottom: 24px;
     }
 
@@ -326,11 +310,6 @@ const swiperConfig = {
             border-radius: 20px;
             border: 1px solid rgba(0,0,0,0.04);
 
-            .feature-icon {
-                font-size: 22px;
-                flex-shrink: 0;
-                margin-top: 2px;
-            }
 
             strong {
                 display: block;
@@ -399,72 +378,33 @@ const swiperConfig = {
     }
 }
 
-.project-title {
-    font-size: 22px;
-    font-weight: 700;
-    color: #3d2c1b;
-    margin: 0 0 8px;
-}
-
-.project-desc {
-    font-size: 15px;
-    color: #5a4a3a;
-    line-height: 1.6;
-    margin-bottom: 16px;
-}
-
-/* 技术栈标签 */
-.tech-tags {
+/* 底部 */
+.footer {
     display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    color: #aaa;
+    font-size: 14px;
 
-    span {
-        background: #f0ece6;
-        padding: 4px 14px;
-        border-radius: 20px;
-        font-size: 12px;
-        color: #4a3a2a;
-        font-weight: 500;
-    }
-}
-
-/* 功能亮点网格 */
-.features-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-bottom: 20px;
-}
-
-.feature-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    background: white;
-    padding: 12px;
-    border-radius: 16px;
-    border: 1px solid rgba(0,0,0,0.04);
-
-    .feature-icon {
-        font-size: 20px;
-        flex-shrink: 0;
-        margin-top: 2px;
-    }
-
-    strong {
-        display: block;
-        font-size: 14px;
-        color: #3d2c1b;
-    }
     p {
-        font-size: 12px;
-        color: #7a6a5a;
-        margin: 2px 0 0;
+        margin-top: 10px;
     }
 }
 
+// 窄屏手机
+@media (max-width: 430px) {
+    .phone-frame {
+        width: 300px;
+        height: auto;
+    }
+
+    .info-card {
+        .features-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+}
 @media (min-width: 1200px) {
     /* 整体容器改为两栏：左栏为手机框，右栏为项目介绍 + 标签（上下排列） */
     .page-container {
@@ -533,7 +473,7 @@ const swiperConfig = {
     .footer {
         grid-column: 1 / span 2;
         grid-row: 3;
-        margin-top: 20px;
+        //margin-top: 20px;
         text-align: center;
     }
 }
