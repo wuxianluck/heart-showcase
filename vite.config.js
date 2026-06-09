@@ -15,4 +15,5 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     },
   },
+  base: '/heart-showcase/',  // 注意：以 / 开头和结尾，仓库名保持一致
 })
