@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Pagination, Autoplay } from 'swiper/modules';
+import { Pagination, Autoplay, Lazy } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
@@ -56,12 +56,18 @@ const goToSlide = (idx) => {
 
 // swiper 配置
 const swiperConfig = {
-    modules: [Pagination, Autoplay],
-    pagination: { clickable: true },
+    modules: [Pagination, Autoplay, Lazy],
     autoplay: { delay: 3000, disableOnInteraction: false },
     loop: true,
     effect: 'slide',
     speed: 600,
+    lazy: {
+        loadPrevNext: true,     // 预加载当前图片的前一张和后一张
+        loadPrevNextAmount: 1,  // 将相邻滑块的图片也一并加载
+        loadOnTransitionStart: true, // 滑动开始时立即加载
+    },
+    preloadImages: false,       // 必须关闭默认预加载
+    watchSlidesProgress: true,  // 推荐开启，用于精确判断滑动进度
 };
 </script>
 
@@ -86,7 +92,10 @@ const swiperConfig = {
                         class="my-swiper"
                     >
                         <swiper-slide v-for="screen in appScreens" :key="screen.img">
-                            <img :src="screen.img" class="app-screen-img" loading="lazy" />
+                            <img
+                                :data-src="screen.img"
+                                class="swiper-lazy"
+                                loading="lazy" />
                         </swiper-slide>
                     </swiper>
                 </div>
@@ -232,7 +241,7 @@ const swiperConfig = {
     overflow: hidden;
     background: white;
 }
-.app-screen-img {
+.swiper-lazy {
     width: 100%;
     height: 100%;
     //object-fit: contain;
