@@ -86,7 +86,7 @@ const swiperConfig = {
                         class="my-swiper"
                     >
                         <swiper-slide v-for="screen in appScreens" :key="screen.img">
-                            <img :src="screen.img" class="app-screen-img" />
+                            <img :src="screen.img" class="app-screen-img" loading="lazy" />
                         </swiper-slide>
                     </swiper>
                 </div>
@@ -117,28 +117,28 @@ const swiperConfig = {
                 <!-- 功能亮点 -->
                 <div class="features-grid">
                     <div class="feature-item">
-                        <span class="feature-icon">💬</span>
+                        <span class="feature-icon"></span>
                         <div>
                             <strong>AI倾诉</strong>
                             <p>接入DeepSeek API，流式逐字渲染</p>
                         </div>
                     </div>
                     <div class="feature-item">
-                        <span class="feature-icon">🌐</span>
+                        <span class="feature-icon"></span>
                         <div>
                             <strong>社交关系星图</strong>
                             <p>ECharts力引导图，节点映射亲疏</p>
                         </div>
                     </div>
                     <div class="feature-item">
-                        <span class="feature-icon">🎭</span>
+                        <span class="feature-icon"></span>
                         <div>
                             <strong>AI社交模拟</strong>
                             <p>4个场景角色扮演，练习尴尬应对</p>
                         </div>
                     </div>
                     <div class="feature-item">
-                        <span class="feature-icon">📱</span>
+                        <span class="feature-icon"></span>
                         <div>
                             <strong>跨端集成</strong>
                             <p>Capacitor构建iOS原生，模拟器运行</p>
@@ -167,7 +167,7 @@ const swiperConfig = {
         <!-- 底部 -->
         <footer class="footer">
             <p>仅展示部分页面</p>
-            <p>感谢你的浏览 · 欢迎联系我😊</p>
+            <p>感谢您的浏览 · 欢迎联系我——19189311798@163.com😊</p>
         </footer>
     </div>
 </template>
@@ -212,40 +212,8 @@ const swiperConfig = {
     font-weight: 400;
 }
 
-/* 功能标签 */
-.feature-tabs {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px;
-    margin: 20px 10px 10px;
-    max-width: 500px;
-}
-.tab-item {
-    background: white;
-    padding: 6px 16px;
-    border-radius: 30px;
-    font-size: 13px;
-    color: #5a4a3a;
-    cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    border: 1px solid rgba(0,0,0,0.04);
-}
-.tab-item:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-}
-.tab-item.active {
-    background: #F9D975;
-    color: #3d2c1b;
-    font-weight: 600;
-    border-color: #F9D975;
-}
-
 /* 手机框 */
 .demo-section {
-    //width: 100%;
     display: flex;
     justify-content: center;
     padding: 10px 0;
@@ -265,14 +233,12 @@ const swiperConfig = {
 .phone-screen {
     width: 100%;
     height: 100%;
-    //border-radius: 34px;
     overflow: hidden;
     background: white;
 }
 .app-screen-img {
     width: 100%;
     height: 100%;
-    /* 使用 contain 确保图片完整显示，不会变形或被裁剪 */
     object-fit: contain;
 }
 
@@ -298,7 +264,7 @@ const swiperConfig = {
 /* 项目信息区域 - 默认小屏样式 */
 .project-info {
     width: 100%;
-    max-width: 500px;
+    max-width: 700px;
     padding: 0 20px 20px;
     margin-top: 20px;
 }
@@ -307,120 +273,130 @@ const swiperConfig = {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(12px);
     border-radius: 24px;
-    padding: 24px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    padding: 40px 36px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
     border: 1px solid rgba(255, 255, 255, 0.5);
 
-    /* ===== 新增：页面导航 ===== */
-    .page-nav {
-        margin-top: 20px;
-        padding-top: 16px;
-        border-top: 1px solid rgba(0,0,0,0.06);
+    /* 项目标题 */
+    .project-title {
+        font-size: 26px;
+        font-weight: 700;
+        color: #3d2c1b;
+        margin: 0 0 16px;
     }
 
-    .nav-label {
-        font-size: 13px;
-        color: #8a7a6a;
-        margin-bottom: 10px;
-        font-weight: 500;
-    }
-
-    .nav-scroll {
-        display: flex;
-        gap: 8px;
-        overflow-x: auto;
-        padding-bottom: 4px;
-        scrollbar-width: thin; /* Firefox */
-        -webkit-overflow-scrolling: touch;
-
-        /* 隐藏滚动条（可选） */
-        &::-webkit-scrollbar {
-            height: 4px;
-        }
-        &::-webkit-scrollbar-thumb {
-            background: #ddd;
-            border-radius: 4px;
-        }
-    }
-
-    .nav-tag {
-        flex-shrink: 0;
-        padding: 6px 16px;
-        border-radius: 30px;
-        font-size: 12px;
+    /* 项目描述 */
+    .project-desc {
+        font-size: 16px;
         color: #5a4a3a;
-        background: rgba(255, 255, 255, 0.6);
-        border: 1px solid rgba(0,0,0,0.06);
-        cursor: pointer;
-        transition: all 0.2s;
-        white-space: nowrap;
+        line-height: 1.8;
+        margin-bottom: 24px;
+    }
 
-        &:hover {
-            background: rgba(249, 217, 117, 0.3);
-            transform: translateY(-1px);
-        }
+    /* 技术栈标签 */
+    .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 28px;
 
-        &.active {
-            background: #F9D975;
-            border-color: #F9D975;
-            font-weight: 600;
-            box-shadow: 0 2px 8px rgba(249, 217, 117, 0.25);
+        span {
+            background: #f0ece6;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #4a3a2a;
+            font-weight: 500;
         }
     }
 
-    /* ===== 大屏适配（>=1024px）修改 ===== */
-    @media (min-width: 1024px) {
-        .page-container {
-            grid-template-columns: 420px 1fr;  /* 左侧固定，右侧自适应 */
-            grid-template-rows: auto 1fr auto;
-            gap: 40px;
-            padding: 60px 80px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    /* 功能亮点网格 */
+    .features-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-bottom: 28px;
 
-        .hero {
-            grid-column: 1 / span 2;
-            grid-row: 1;
-            text-align: center;
-            padding-bottom: 20px;
-        }
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: white;
+            padding: 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(0,0,0,0.04);
 
-        .demo-section {
-            grid-column: 1;
-            grid-row: 2;
-            padding: 0;
-            justify-content: center;
-            align-self: center;  /* 垂直居中 */
-        }
+            .feature-icon {
+                font-size: 22px;
+                flex-shrink: 0;
+                margin-top: 2px;
+            }
 
-        /* 右侧只保留 project-info */
-        .project-info {
-            grid-column: 2;
-            grid-row: 2;
-            max-width: none;
-            padding: 0;
-            margin: 0;
-            align-self: start;
-        }
+            strong {
+                display: block;
+                font-size: 15px;
+                color: #3d2c1b;
+            }
 
-        .info-card {
-            padding: 32px;
-        }
-
-        /* 删除原来的 .feature-tabs 独立样式 */
-        .feature-tabs {
-            display: none;  /* 不再需要，已整合到卡片内 */
-        }
-
-        .footer {
-            grid-column: 1 / span 2;
-            grid-row: 3;
-            margin-top: 20px;
-            text-align: center;
+            p {
+                font-size: 13px;
+                color: #7a6a5a;
+                margin: 2px 0 0;
+            }
         }
     }
 
+    /* 页面导航 */
+    .page-nav {
+        margin-top: 28px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(0,0,0,0.08);
+
+        .nav-label {
+            font-size: 14px;
+            color: #8a7a6a;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .nav-scroll {
+            display: flex;
+            flex-wrap: wrap;      /* ⭐ 允许标签自动换行到第二行 */
+            gap: 8px 10px;        /* 设置行间距 8px，列间距 10px */
+            overflow: visible;    /* 移除了滚动条 */
+            padding-bottom: 4px;  /* 底部留白 */
+
+            /* 移除原本的滚动条样式 */
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        .nav-tag {
+            flex-shrink: 0;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 13px;
+            color: #5a4a3a;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(0,0,0,0.06);
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+
+            &:hover {
+                background: rgba(249, 217, 117, 0.3);
+                transform: translateY(-1px);
+            }
+
+            &.active {
+                background: #F9D975;
+                border-color: #F9D975;
+                font-weight: 600;
+                box-shadow: 0 2px 8px rgba(249, 217, 117, 0.25);
+            }
+        }
+    }
 }
 
 .project-title {
@@ -489,7 +465,7 @@ const swiperConfig = {
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
     /* 整体容器改为两栏：左栏为手机框，右栏为项目介绍 + 标签（上下排列） */
     .page-container {
         display: grid;
@@ -533,6 +509,8 @@ const swiperConfig = {
         grid-column: 2;
         grid-row: 2;
         //max-width: none;
+        width: 100%;
+        max-width: 600px; /* 或者 650px，让右栏更宽一些 */
         padding: 0;
         margin: 0;
         //align-self: start;
