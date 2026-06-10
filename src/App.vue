@@ -86,7 +86,7 @@ const swiperConfig = {
                         class="my-swiper"
                     >
                         <swiper-slide v-for="screen in appScreens" :key="screen.img">
-                            <img :src="screen.img" class="app-screen-img" loading="lazy" />
+                            <img :src="screen.img" class="app-screen-img" loading="lazy" :alt="screen.title"/>
                         </swiper-slide>
                     </swiper>
                 </div>
@@ -227,6 +227,7 @@ const swiperConfig = {
     position: relative;
 }
 .phone-screen {
+    aspect-ratio: 393 / 852; /* 你手机框的宽高比 */
     width: 100%;
     height: 100%;
     overflow: hidden;
